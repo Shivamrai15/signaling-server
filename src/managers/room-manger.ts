@@ -17,12 +17,10 @@ import { DefaultEventsMap } from "socket.io/dist/typed-events";
 export class RoomManager{
 
     private rooms: { [key: string]: string[] } = {};
-    private roomBoard: { [key: string]: string } = {};
     private users: { [key: string]: User } = {};
 
     constructor () {
         this.rooms = {};
-        this.roomBoard = {};
         this.users = {};
     }
 
@@ -88,5 +86,9 @@ export class RoomManager{
             }
         }
         return "";
+    }
+
+    getUser( socketId : string ) {
+        return this.users[socketId]
     }
 } 
